@@ -4,8 +4,7 @@ var chart = c3.generate({
     bindto: '#graph',
     data: {
         x: 'x',
-        columns: [
-        ]
+        columns: []
     },
     axis: {
         x: {
@@ -22,10 +21,10 @@ var LABEL_PREFIXES = /^avg|^min|^max/;
 var labels = null;
 var columns = [];
 
-var appendColumn = function (index, label, value) {
-    if(!value){
+var appendColumn = function(index, label, value) {
+    if (!value) {
         console.log('value is null ' + label + ' is skipped');
-    } else{
+    } else {
         if (columns.length <= index) {
             columns.push([label]);
         }
@@ -36,27 +35,27 @@ var appendColumn = function (index, label, value) {
     }
 };
 
-var initializeLabels = function (data) {
+var initializeLabels = function(data) {
     labels = [];
-    Object.keys(data).forEach(function (key) {
+    Object.keys(data).forEach(function(key) {
         if (LABEL_PREFIXES.test(key)) {
             labels.push(key);
         }
     });
 };
 
-io.on('data', function (incomingData) {
+io.on('data', function(incomingData) {
     // Initialize labels from incoming data
     if (labels === null) {
         initializeLabels(incomingData);
     }
-    if(incomingData.timestamp){
+    if (incomingData.timestamp) {
         appendColumn(0, 'x', new Date(incomingData.timestamp));
         for (var i = 0; i < labels.length; i++) {
             appendColumn(i + 1, labels[i], incomingData[labels[i]]);
         }
-    }else{
-        console.log('bad timestamp is skipped');   
+    } else {
+        console.log('bad timestamp is skipped');
     }
     chart.load({
         columns: columns
