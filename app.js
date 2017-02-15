@@ -6,8 +6,8 @@ var Message = require('azure-iot-common').Message;
 
 app = express().http().io()
 
-var iotHubConnectionString = process.env.THINGLABS_IOTHUB_CONNSTRING || '' //'HostName=Sri-Home-Iot-Hub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=4JNd69iePfvjn1sNHW4afxCey6Gk8IORmwFfzfDE2as='
-var eventHubConnectionString = process.env.THINGLABS_EVENTHUB_CONNSTRING || 'Endpoint=sb://sri-iothub-eventhub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=etkepZ8DrAgtyXrrasdLZNtwg/uhJjZQAWrUqYZEgE4='
+var iotHubConnectionString = process.env.THINGLABS_IOTHUB_CONNSTRING || ''
+var eventHubConnectionString = process.env.THINGLABS_EVENTHUB_CONNSTRING || ''
 var eventHubName = process.env.THINGLABS_EVENTHUBNAME || 'iothub-eh'
 var client = EventHubClient.fromConnectionString(eventHubConnectionString, eventHubName)
 
