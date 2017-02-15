@@ -61,15 +61,15 @@ app.io.route('ready', function(req) {
                 .then(function(rx) {
                     rx.on('errorReceived', function(err) { console.log(err); });
                     rx.on('message', function(message) {
-                        console.log("message.boby: ");
-                        console.log(message.body);
+                        //console.log("message.boby: ");
+                        //console.log(message.body);
                         var body = message.body;
                         try {
                             app.io.broadcast('data', body);
-                            console.log("app.io.broadcast of body complete.")
+                            //console.log("app.io.broadcast of body complete.")
                         } catch (err) {
                             console.log("Error sending: " + body);
-                            console.log(typeof(body));
+                            //console.log(typeof(body));
                         }
                     });
                 });

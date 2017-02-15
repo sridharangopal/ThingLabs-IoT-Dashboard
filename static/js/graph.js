@@ -17,7 +17,9 @@ var chart = c3.generate({
 });
 
 var DATA_POINT_COUNT = 20;
-var LABEL_PREFIXES = /^avg|^min|^max/;
+//var LABEL_PREFIXES = /^avg|^min|^max/;
+//var LABEL_PREFIXES = /^temperature|^humidity|^light|^airpressure/;
+var LABEL_PREFIXES = /^temperature|^humidity/;
 var labels = null;
 var columns = [];
 
@@ -49,8 +51,8 @@ io.on('data', function(incomingData) {
     if (labels === null) {
         initializeLabels(incomingData);
     }
-    if (incomingData.timestamp) {
-        appendColumn(0, 'x', new Date(incomingData.timestamp));
+    if (incomingData.timecreated) {
+        appendColumn(0, 'x', new Date(incomingData.timecreated));
         for (var i = 0; i < labels.length; i++) {
             appendColumn(i + 1, labels[i], incomingData[labels[i]]);
         }
