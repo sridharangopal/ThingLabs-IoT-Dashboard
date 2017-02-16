@@ -19,7 +19,7 @@ var chart = c3.generate({
 var DATA_POINT_COUNT = 20;
 //var LABEL_PREFIXES = /^avg|^min|^max/;
 //var LABEL_PREFIXES = /^temperature|^humidity|^light|^airpressure/;
-var LABEL_PREFIXES = /^Celsius|^Humidity/;
+var LABEL_PREFIXES = /^temperature|^humidity/;
 var labels = null;
 var columns = [];
 
